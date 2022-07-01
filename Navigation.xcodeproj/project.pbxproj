@@ -16,8 +16,6 @@
 		C8444D7E2724D54800ED6C4F /* TextFieldExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8444D7D2724D54800ED6C4F /* TextFieldExtention.swift */; };
 		C8444D802724D56B00ED6C4F /* ButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8444D7F2724D56B00ED6C4F /* ButtonExtention.swift */; };
 		C86B52E0271AA33800B1910D /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B52DF271AA33800B1910D /* PostVC.swift */; };
-		C86DF1E3286B85600001B953 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF1E2286B85600001B953 /* Configuration.swift */; };
-		C86DF1E5286B89070001B953 /* NetworkJedi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86DF1E4286B89070001B953 /* NetworkJedi.swift */; };
 		C86EC483272AB21600E705F9 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86EC482272AB21600E705F9 /* MyButton.swift */; };
 		C8773AFE271A4AE500C5E0B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8773AFD271A4AE500C5E0B9 /* AppDelegate.swift */; };
 		C8773B00271A4AE500C5E0B9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8773AFF271A4AE500C5E0B9 /* SceneDelegate.swift */; };
@@ -31,6 +29,8 @@
 		C8BB70A02746D0AA005E2C5C /* PhotoGalleryArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB709F2746D0AA005E2C5C /* PhotoGalleryArray.swift */; };
 		C8BB70A22746D706005E2C5C /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB70A12746D706005E2C5C /* PhotoViewController.swift */; };
 		C8BB70A42746D766005E2C5C /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8BB70A32746D766005E2C5C /* PhotoCollectionViewCell.swift */; };
+		C8C81BB2286B93F000E566D5 /* NetworkJedi.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BB0286B93F000E566D5 /* NetworkJedi.swift */; };
+		C8C81BB3286B93F000E566D5 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C81BB1286B93F000E566D5 /* Configuration.swift */; };
 		C8CBBC2A27768DD300ABE68C /* StorageService.docc in Sources */ = {isa = PBXBuildFile; fileRef = C8CBBC2927768DD300ABE68C /* StorageService.docc */; };
 		C8CBBC3027768DD300ABE68C /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8CBBC2627768DD300ABE68C /* StorageService.framework */; };
 		C8CBBC3727768DD300ABE68C /* StorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CBBC3627768DD300ABE68C /* StorageServiceTests.swift */; };
@@ -99,8 +99,6 @@
 		C8444D7D2724D54800ED6C4F /* TextFieldExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtention.swift; sourceTree = "<group>"; };
 		C8444D7F2724D56B00ED6C4F /* ButtonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtention.swift; sourceTree = "<group>"; };
 		C86B52DF271AA33800B1910D /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
-		C86DF1E2286B85600001B953 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
-		C86DF1E4286B89070001B953 /* NetworkJedi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkJedi.swift; sourceTree = "<group>"; };
 		C86EC482272AB21600E705F9 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		C8773AFA271A4AE500C5E0B9 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8773AFD271A4AE500C5E0B9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +114,8 @@
 		C8BB709F2746D0AA005E2C5C /* PhotoGalleryArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryArray.swift; sourceTree = "<group>"; };
 		C8BB70A12746D706005E2C5C /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		C8BB70A32746D766005E2C5C /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		C8C81BB0286B93F000E566D5 /* NetworkJedi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkJedi.swift; sourceTree = "<group>"; };
+		C8C81BB1286B93F000E566D5 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C8CBBC2627768DD300ABE68C /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8CBBC2827768DD300ABE68C /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
 		C8CBBC2927768DD300ABE68C /* StorageService.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = StorageService.docc; sourceTree = "<group>"; };
@@ -204,15 +204,6 @@
 			path = Extentions;
 			sourceTree = "<group>";
 		};
-		C86DF1E1286B852C0001B953 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				C86DF1E2286B85600001B953 /* Configuration.swift */,
-				C86DF1E4286B89070001B953 /* NetworkJedi.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		C8773AF1271A4AE500C5E0B9 = {
 			isa = PBXGroup;
 			children = (
@@ -242,7 +233,7 @@
 				C8773AFF271A4AE500C5E0B9 /* SceneDelegate.swift */,
 				C818081E2733995E000E01D8 /* Constants.swift */,
 				C8BB709F2746D0AA005E2C5C /* PhotoGalleryArray.swift */,
-				C86DF1E1286B852C0001B953 /* Network */,
+				C8C81BAF286B93F000E566D5 /* Network */,
 				C8444D7427241A0C00ED6C4F /* ViewController */,
 				C8444D7A2724D40F00ED6C4F /* Extentions */,
 				C8773B08271A4AE700C5E0B9 /* LaunchScreen.storyboard */,
@@ -251,6 +242,15 @@
 				C8773AFD271A4AE500C5E0B9 /* AppDelegate.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		C8C81BAF286B93F000E566D5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C8C81BB0286B93F000E566D5 /* NetworkJedi.swift */,
+				C8C81BB1286B93F000E566D5 /* Configuration.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C8CBBC2727768DD300ABE68C /* StorageService */ = {
@@ -525,12 +525,13 @@
 			files = (
 				C8BB709E2746D008005E2C5C /* PhotoTableViewCell.swift in Sources */,
 				C8444D792724D40200ED6C4F /* ViewExtention.swift in Sources */,
-				C86DF1E5286B89070001B953 /* NetworkJedi.swift in Sources */,
 				C8444D7C2724D51100ED6C4F /* ImageViewExtention.swift in Sources */,
 				C8444D802724D56B00ED6C4F /* ButtonExtention.swift in Sources */,
 				C86EC483272AB21600E705F9 /* MyButton.swift in Sources */,
 				C8773B14271A743300C5E0B9 /* ProfileVC.swift in Sources */,
+				C8C81BB3286B93F000E566D5 /* Configuration.swift in Sources */,
 				C818081F2733995E000E01D8 /* Constants.swift in Sources */,
+				C8C81BB2286B93F000E566D5 /* NetworkJedi.swift in Sources */,
 				C8444D7E2724D54800ED6C4F /* TextFieldExtention.swift in Sources */,
 				C8BB70A42746D766005E2C5C /* PhotoCollectionViewCell.swift in Sources */,
 				C8773B12271A73F700C5E0B9 /* FeedVC.swift in Sources */,
@@ -544,7 +545,6 @@
 				C86B52E0271AA33800B1910D /* PostVC.swift in Sources */,
 				C87E23922736468F000D78C8 /* UIImage.swift in Sources */,
 				C8F8A317271BA00700E0FF71 /* Alert.swift in Sources */,
-				C86DF1E3286B85600001B953 /* Configuration.swift in Sources */,
 				C8444D7727241A4C00ED6C4F /* ProfileHeaderView.swift in Sources */,
 				C8BB70A22746D706005E2C5C /* PhotoViewController.swift in Sources */,
 			);
