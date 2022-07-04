@@ -10,7 +10,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NetworkJedi.shared.requestRandomData()
         NetworkJedi.shared.requestDataAboutTitle()
-        NetworkJedi.shared.requestDataAboutOrbitalPeriod()
+        NetworkJedi.shared.requestPeriodAndResidents()
         return true
     }
 

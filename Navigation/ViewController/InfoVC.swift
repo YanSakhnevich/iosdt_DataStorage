@@ -1,13 +1,20 @@
 import UIKit
 
-class InfoVC: UIViewController {
-    
-    static let shared = InfoVC()
+protocol NetworkServiceProtocol {
+    func reloadDataInTable()
+}
 
+class InfoVC: UIViewController, NetworkServiceProtocol {
+    
+    //MARK: Table reload data for Network Jedi
+    func reloadDataInTable() {
+        self.residentNameTable.reloadData()
+    }
+        
     // MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .lightGray
+        view.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 207/255, alpha: 1)
         view.isOpaque = false
         setupLayout()
         self.residentNameTable.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
@@ -16,18 +23,9 @@ class InfoVC: UIViewController {
     
     // MARK: Try Button
     private lazy var tryButton: UIButton = {
-        
         let tryButton = UIButton()
-        
         tryButton.toAutoLayout()
-        
-        if let image = UIImage(named: .logInButtonImageName) {
-            tryButton.setBackgroundImage(image.image(alpha: 1), for: .normal)
-            tryButton.setBackgroundImage(image.image(alpha: 0.8), for: .selected)
-            tryButton.setBackgroundImage(image.image(alpha: 0.8), for: .highlighted)
-            tryButton.setBackgroundImage(image.image(alpha: 0.8), for: .disabled)
-        }
-        
+        tryButton.backgroundColor = UIColor(red: 87/255, green: 111/255, blue: 114/255, alpha: 1)
         tryButton.setTitle(.infoVCButtonName, for: .normal)
         tryButton.setTitleColor(.white, for: .normal)
         tryButton.addTarget(self, action: #selector(didTapButton), for: .touchUpInside)
@@ -45,20 +43,16 @@ class InfoVC: UIViewController {
     // MARK: Title Todos Label
     private lazy var titleTodos: UILabel = {
         let titleTodos = UILabel()
-        
         titleTodos.layer.borderColor = UIColor.black.cgColor
         titleTodos.layer.borderWidth = 1.0
         titleTodos.layer.cornerRadius = 5.0
-
         let boldText = "  Title: "
         let attrsBold = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
-
         let attrsNormal = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .light)]
         let normalString = NSMutableAttributedString(string:NetworkJedi.title, attributes: attrsNormal)
         attributedString.append(normalString)
         titleTodos.attributedText = attributedString
-
         titleTodos.toAutoLayout()
         titleTodos.numberOfLines = 0
         return titleTodos
@@ -67,26 +61,22 @@ class InfoVC: UIViewController {
     // MARK: Rotation period Label
     private lazy var rotationPeriod: UILabel = {
         let periodOfRotation = UILabel()
-        
         periodOfRotation.layer.borderColor = UIColor.black.cgColor
         periodOfRotation.layer.borderWidth = 1.0
         periodOfRotation.layer.cornerRadius = 5.0
-        
         let boldText = "  Rotation period: "
         let attrsBold = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 16)]
         let attributedString = NSMutableAttributedString(string:boldText, attributes:attrsBold)
-
         let attrsNormal = [NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16, weight: .light)]
         let normalString = NSMutableAttributedString(string:NetworkJedi.orbitalPeriod, attributes: attrsNormal)
         attributedString.append(normalString)
         periodOfRotation.attributedText = attributedString
-        
         periodOfRotation.toAutoLayout()
         periodOfRotation.numberOfLines = 0
         return periodOfRotation
     }()
     
-    var residentNameTable: UITableView = {
+    lazy var residentNameTable: UITableView = {
         let personNameTable = UITableView()
         personNameTable.toAutoLayout()
         personNameTable.layer.cornerRadius = 10.0
@@ -132,13 +122,13 @@ class InfoVC: UIViewController {
 
 extension InfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 50
+        return NetworkJedi.namesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.residentNameTable.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
-        cell.backgroundColor = .systemBackground
-        cell.textLabel?.text = "ABC"
+        cell.backgroundColor = .white
+        cell.textLabel?.text = NetworkJedi.namesArray[indexPath.row]
            return cell
     }
 }
