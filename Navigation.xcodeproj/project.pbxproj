@@ -15,6 +15,8 @@
 		C8444D7C2724D51100ED6C4F /* ImageViewExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8444D7B2724D51100ED6C4F /* ImageViewExtention.swift */; };
 		C8444D7E2724D54800ED6C4F /* TextFieldExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8444D7D2724D54800ED6C4F /* TextFieldExtention.swift */; };
 		C8444D802724D56B00ED6C4F /* ButtonExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8444D7F2724D56B00ED6C4F /* ButtonExtention.swift */; };
+		C851EC5A2872278200016795 /* Used URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851EC592872278200016795 /* Used URL.swift */; };
+		C851EC5C2872370700016795 /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C851EC5B2872370700016795 /* PlanetModel.swift */; };
 		C86B52E0271AA33800B1910D /* PostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86B52DF271AA33800B1910D /* PostVC.swift */; };
 		C86EC483272AB21600E705F9 /* MyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86EC482272AB21600E705F9 /* MyButton.swift */; };
 		C8773AFE271A4AE500C5E0B9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8773AFD271A4AE500C5E0B9 /* AppDelegate.swift */; };
@@ -98,6 +100,8 @@
 		C8444D7B2724D51100ED6C4F /* ImageViewExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewExtention.swift; sourceTree = "<group>"; };
 		C8444D7D2724D54800ED6C4F /* TextFieldExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldExtention.swift; sourceTree = "<group>"; };
 		C8444D7F2724D56B00ED6C4F /* ButtonExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonExtention.swift; sourceTree = "<group>"; };
+		C851EC592872278200016795 /* Used URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Used URL.swift"; sourceTree = "<group>"; };
+		C851EC5B2872370700016795 /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 		C86B52DF271AA33800B1910D /* PostVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostVC.swift; sourceTree = "<group>"; };
 		C86EC482272AB21600E705F9 /* MyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyButton.swift; sourceTree = "<group>"; };
 		C8773AFA271A4AE500C5E0B9 /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -249,6 +253,8 @@
 			children = (
 				C8C81BB0286B93F000E566D5 /* NetworkJedi.swift */,
 				C8C81BB1286B93F000E566D5 /* Configuration.swift */,
+				C851EC592872278200016795 /* Used URL.swift */,
+				C851EC5B2872370700016795 /* PlanetModel.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				C8BB709E2746D008005E2C5C /* PhotoTableViewCell.swift in Sources */,
 				C8444D792724D40200ED6C4F /* ViewExtention.swift in Sources */,
 				C8444D7C2724D51100ED6C4F /* ImageViewExtention.swift in Sources */,
+				C851EC5C2872370700016795 /* PlanetModel.swift in Sources */,
 				C8444D802724D56B00ED6C4F /* ButtonExtention.swift in Sources */,
 				C86EC483272AB21600E705F9 /* MyButton.swift in Sources */,
 				C8773B14271A743300C5E0B9 /* ProfileVC.swift in Sources */,
@@ -538,6 +545,7 @@
 				C8773AFE271A4AE500C5E0B9 /* AppDelegate.swift in Sources */,
 				C8773B00271A4AE500C5E0B9 /* SceneDelegate.swift in Sources */,
 				C8F8A315271B921D00E0FF71 /* InfoVC.swift in Sources */,
+				C851EC5A2872278200016795 /* Used URL.swift in Sources */,
 				C8BB70A02746D0AA005E2C5C /* PhotoGalleryArray.swift in Sources */,
 				C8CBBC452776922E00ABE68C /* PostTableViewCell.swift in Sources */,
 				C8EEB08B27353F70003CB007 /* String.swift in Sources */,

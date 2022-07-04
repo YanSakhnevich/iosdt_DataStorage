@@ -5,6 +5,8 @@ struct Constants {
     static let leadingMargin:CGFloat = 16
     static let trailingMargin:CGFloat = -16
     static let indent:CGFloat = 16
+    static let heightInfoLabel: CGFloat = 20
+    static let buttonOffset: CGFloat = -30
     
     static let logoImage: UIImage? = UIImage(named: .logoImageNamed)
     static let logoImageViewFrame: CGRect = CGRect(x: 0, y: 0, width: 50, height: 50)

@@ -7,12 +7,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-      
-        let url = AppConfiguration.randomURL()
-                
-        print(url)
-                
-        NetworkJedi.shared.getDataFromURL(url: url)
+        
+        NetworkJedi.shared.requestRandomData()
+        NetworkJedi.shared.requestDataAboutTitle()
+        NetworkJedi.shared.requestDataAboutOrbitalPeriod()
         return true
     }
 
