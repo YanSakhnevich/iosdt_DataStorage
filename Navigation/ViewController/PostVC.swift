@@ -2,7 +2,8 @@ import UIKit
 
 class PostVC: UIViewController {
     private let titlePost: String
-    
+    private let viewModel: InfoViewModel
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,8 +20,9 @@ class PostVC: UIViewController {
         
     }
     
-    init(titlePost: String) {
+    init(titlePost: String,viewModel: InfoViewModel) {
         self.titlePost = titlePost
+        self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -38,7 +40,7 @@ class PostVC: UIViewController {
     }
     
     func showModal() {
-        let infoVC = InfoVC()
+        let infoVC = InfoVC(viewModel: viewModel)
         present(infoVC, animated: true, completion: nil)
     }
         
