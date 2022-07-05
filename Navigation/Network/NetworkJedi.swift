@@ -6,7 +6,25 @@ protocol InfoServiceProtocol {
 
 struct NetworkJedi: InfoServiceProtocol {
     
-    private func request(url: String, completion: @escaping (String) -> Void) {
+//    private func request1(url: String, completion: @escaping (Result<String, Error>) -> Void) {
+//        
+//        guard let url = URL(string: url) else {
+//            print("Couldn't get URL")
+//            return }
+//        URLSession.shared.dataTask(with: url) { (data, response, error) in
+//            if let error = error {
+//                completion(.failure(error))
+//                return
+//            }
+//            guard let data = data else { return }
+//            if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                guard let name = json["name"] as? String else { return }
+//                completion(.success(name))
+//            }
+//        }.resume()
+//    }
+    
+    private func request(url: String, completion: @escaping (String?) -> Void) {
         
         guard let url = URL(string: url) else {
             print("Couldn't get URL")
@@ -23,6 +41,7 @@ struct NetworkJedi: InfoServiceProtocol {
             }
             catch let error {
                 print(error)
+                completion(nil)
             }
         }.resume()
     }
@@ -41,6 +60,9 @@ struct NetworkJedi: InfoServiceProtocol {
                     for people in peopleArray {
                         group.enter()
                         request(url: people) { (name) in
+                            guard let name = name else {
+                                group.leave()
+                                return }
                             namesArray.append(name)
                             group.leave()
                         }
