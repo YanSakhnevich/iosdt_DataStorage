@@ -1,12 +1,67 @@
 import UIKit
 
-struct NetworkJedi {
+protocol InfoServiceProtocol {
+    func fetchData(url: URL?, response: @escaping ([String]?) -> Void)
+}
+
+struct NetworkJedi: InfoServiceProtocol {
     
+    private func request(url: String, completion: @escaping (String) -> Void) {
+        
+        guard let url = URL(string: url) else {
+            print("Couldn't get URL")
+            return }
+        URLSession.shared.dataTask(with: url) { data, responce, error in
+            guard let data = data else { return }
+            do {
+                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+                    guard let name = json["name"] as? String else { return }
+                    completion(name)
+                } else {
+                    print("Failed to serialize")
+                }
+            }
+            catch let error {
+                print(error)
+            }
+        }.resume()
+    }
+    
+    func fetchData(url: URL?, response: @escaping ([String]?) -> Void) {
+        guard let url = url else {
+            print("Couldn't get URL")
+            return }
+        URLSession.shared.dataTask(with: url) { data, responce, error in
+            guard let data = data else { return }
+            do {
+                if let json = try? JSONDecoder().decode(PlanetModel.self, from: data) {
+                    let peopleArray = json.residents
+                    var namesArray = [String]()
+                    let group = DispatchGroup()
+                    for people in peopleArray {
+                        group.enter()
+                        request(url: people) { (name) in
+                            namesArray.append(name)
+                            group.leave()
+                        }
+                        group.notify(queue: .main) {
+                            response(namesArray)
+                        }
+                    }
+                } else {
+                    print("Failed to decode")
+                }
+            }
+        }.resume()
+    }
+    
+ 
+    // -----------------------------------------------------------------------------------------------------
     static var title = ""
     static var orbitalPeriod = ""
     static var namesArray: [String] = []
     static let shared = NetworkJedi()
-    private let reloadTable: NetworkServiceProtocol = InfoVC()
+//    private let reloadTable: NetworkServiceProtocol = InfoVC()
     
     // MARK: Request from swapi.dev task 1.1
     func requestRandomData() {
@@ -50,7 +105,7 @@ struct NetworkJedi {
     }
     
     //MARK: Request data about orbital period
-    func requestPeriodAndResidents() {
+    func requestPeriod() {
         guard let url = URL(string: UsedUrl.swapApi) else {
             print("Couldn't get URL")
             return }
@@ -59,38 +114,32 @@ struct NetworkJedi {
             do {
                 if let json = try? JSONDecoder().decode(PlanetModel.self, from: data) {
                     NetworkJedi.orbitalPeriod = json.orbitalPeriod
-                    let peopleArray = json.residents
-                    for people in peopleArray {
-                        requestNames(url: people)
-                    }
-                    DispatchQueue.main.async {
-                        reloadTable.reloadDataInTable()
-                    }
                 } else {
                     print("Failed to decode")
                 }
             }
         }.resume()
     }
-    
-    //MARK: Request data about names
-    func requestNames(url: String) {
-        guard let url = URL(string: url) else {
-            print("Couldn't get URL")
-            return }
-        URLSession.shared.dataTask(with: url) { data, responce, error in
-            guard let data = data else { return }
-            do {
-                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
-                    guard let name = json["name"] as? String else { return }
-                    NetworkJedi.namesArray.append(name)
-                } else {
-                    print("Failed to serialize")
-                }
-            }
-            catch let error {
-                print(error)
-            }
-        }.resume()
-    }
+//
+//    //MARK: Request data about names
+//    func requestNames(url: String) {
+//        guard let url = URL(string: url) else {
+//            print("Couldn't get URL")
+//            return }
+//        URLSession.shared.dataTask(with: url) { data, responce, error in
+//            guard let data = data else { return }
+//            do {
+//                if let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+//                    guard let name = json["name"] as? String else { return }
+//                    NetworkJedi.namesArray.append(name)
+//                } else {
+//                    print("Failed to serialize")
+//                }
+//            }
+//            catch let error {
+//                print(error)
+//            }
+//        }.resume()
+//    }
+    //--------------------------------------------------------------------------------------------------------------
 }

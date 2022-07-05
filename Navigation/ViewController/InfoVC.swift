@@ -1,10 +1,63 @@
 import UIKit
+import SnapKit
 
 protocol NetworkServiceProtocol {
     func reloadDataInTable()
 }
 
 class InfoVC: UIViewController, NetworkServiceProtocol {
+    
+    private let viewModel: InfoViewModel
+    private let spinnerView = UIActivityIndicatorView(style: .large)
+
+    init(viewModel: InfoViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViewModel() {
+        viewModel.onStateChanged = { [weak self] state in
+            guard let self = self else { return }
+            
+            switch state {
+            case .initial:
+                self.hideContent()
+                self.spinnerView.startAnimating()
+                
+            case .loading:
+                self.hideContent()
+                self.spinnerView.startAnimating()
+                
+            case .loaded:
+                self.spinnerView.stopAnimating()
+                self.showContent()
+                self.residentNameTable.reloadData()
+                
+            case let .error(error):
+                print(error)
+            }
+        }
+    }
+    
+    private func hideContent() {
+        UIView.animate(withDuration: 0.25) {
+            self.residentNameTable.alpha = 0
+        }
+    }
+    
+    private func showContent() {
+        UIView.animate(withDuration: 0.25) {
+            self.residentNameTable.alpha = 1
+        }
+    }
+    
+    
+    
+    
     
     //MARK: Table reload data for Network Jedi
     func reloadDataInTable() {
@@ -17,8 +70,10 @@ class InfoVC: UIViewController, NetworkServiceProtocol {
         view.backgroundColor = UIColor(red: 228/255, green: 229/255, blue: 207/255, alpha: 1)
         view.isOpaque = false
         setupLayout()
-        self.residentNameTable.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
-        self.residentNameTable.dataSource = self
+        setupViewModel()
+        viewModel.send(.viewDidLoad)
+
+        
     }
     
     // MARK: Try Button
@@ -79,6 +134,9 @@ class InfoVC: UIViewController, NetworkServiceProtocol {
     lazy var residentNameTable: UITableView = {
         let personNameTable = UITableView()
         personNameTable.toAutoLayout()
+        personNameTable.register(TableViewCell.self, forCellReuseIdentifier: "TableViewCell")
+        personNameTable.dataSource = self
+        personNameTable.delegate = self
         personNameTable.layer.cornerRadius = 10.0
         personNameTable.backgroundColor = .white
         return personNameTable
@@ -86,10 +144,14 @@ class InfoVC: UIViewController, NetworkServiceProtocol {
 
     // MARK: Setup layout
     private func setupLayout() {
-        view.addSubview(tryButton)
-        view.addSubview(titleTodos)
-        view.addSubview(rotationPeriod)
-        view.addSubview(residentNameTable)
+        let views: [UIView] = [
+            tryButton,
+            titleTodos,
+            rotationPeriod,
+            residentNameTable,
+            spinnerView
+        ]
+        view.addSubviews(views)
         setupConstraints()
     }
     
@@ -115,20 +177,27 @@ class InfoVC: UIViewController, NetworkServiceProtocol {
             residentNameTable.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: Constants.leadingMargin),
             residentNameTable.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: Constants.trailingMargin),
             residentNameTable.bottomAnchor.constraint(equalTo: tryButton.topAnchor, constant: -Constants.statusTextFieldHeight)
+            
         ])
+        
+        spinnerView.snp.makeConstraints { spiner in
+            spiner.centerX.equalTo(self.view.safeAreaLayoutGuide.snp.centerX)
+            spiner.centerY.equalTo(self.view.safeAreaLayoutGuide.snp.centerY)
+        }
     }
 
 }
 
 extension InfoVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return NetworkJedi.namesArray.count
+        return viewModel.namesArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.residentNameTable.dequeueReusableCell(withIdentifier: "TableViewCell", for: indexPath) as! TableViewCell
+        let name = viewModel.namesArray[indexPath.row]
         cell.backgroundColor = .white
-        cell.textLabel?.text = NetworkJedi.namesArray[indexPath.row]
+        cell.textLabel?.text = name
            return cell
     }
 }
